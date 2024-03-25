@@ -1,0 +1,12 @@
+https://superheroapi.com/api/
+
+https://superheroapi.com/api/679715807085553/70
+
+marvel public-key = 11be3e2798b8dfba5fd1a35b06c1ff12
+marvel private-key = 8a50952435c7f9e3ce80fe2bab645f7031324d31
+
+Character API - https://gateway.marvel.com/v1/public/characters?offset={SHOULD BE CHANGABLE RANGE}&ts=1&apikey=11be3e2798b8dfba5fd1a35b06c1ff12&hash=ef20bca74f72a08ebddd9b13818ceffb
+
+Comic API - https://gateway.marvel.com/v1/public/comics?offset={SHOULD BE CHANGABLE RANGE}&ts=1&apikey=11be3e2798b8dfba5fd1a35b06c1ff12&hash=ef20bca74f72a08ebddd9b13818ceffb
+
+Series API - https://gateway.marvel.com:443/v1/public/series?offset={SHOULD BE CHANGABLE RANGE}&ts=1&apikey=11be3e2798b8dfba5fd1a35b06c1ff12&hash=ef20bca74f72a08ebddd9b13818ceffb

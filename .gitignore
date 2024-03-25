@@ -11,6 +11,11 @@
 # production
 /build
 
+# User-Defined
+/.log
+/.txt
+/.json
+
 # misc
 .DS_Store
 .env.local
