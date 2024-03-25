@@ -12,9 +12,8 @@
 /build
 
 # User-Defined
-/.log
-/.txt
-/.json
+*.log
+*.txt
 
 # misc
 .DS_Store
