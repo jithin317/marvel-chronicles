@@ -12,8 +12,8 @@
 /build
 
 # User-Defined
-*.log
-*.txt
+/firebase-debug.log
+/superheroapi.txt
 
 # misc
 .DS_Store
