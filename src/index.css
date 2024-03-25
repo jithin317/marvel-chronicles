@@ -41,7 +41,6 @@ code {
 .fw_200 {
   font-weight: 200;
 }
-
 .fw_300 {
   font-weight: 300;
 }
@@ -66,23 +65,42 @@ code {
 
 /* Colors */
 
-.white-color {
+.light {
   color: #fff;
 }
-.primary-color {
-  color: #dd1717;
+.dark {
+  color: #101828;
 }
-.black-color {
-  color: #040406;
+.light_gray {
+  color: #475467;
 }
-.light-color{
-    color:#344054
+.dark_gray{
+  color: #344054;
 }
+.blue {
+  color: #6941c6;
+}
+.red{
+  color: #F04438;
+}
+
 /* Backgrounds */
 
-.primary-bg {
-  background-color: #dd1717;
+.dark_bg {
+  background-color: #1d2939;
+}
+.light_bg {
+  background-color: #f9fafb;
 }
 .secondary-bg {
-  background-color: #040406;
+  background-color: #101828;
+}
+
+/* Form Styles */
+
+.light_border{
+  border: 1px solid #D0D5DD;
+}
+.warning_border{
+  border: 1px solid #FDA29B;
 }
