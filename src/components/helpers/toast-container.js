@@ -31,7 +31,7 @@ export function ErrorToast({ message = "Not Authorized" }) {
 export function InfoToast({ message = "Not Authorized" }) {
   return toast.info(message, {
     position: "top-center",
-    autoClose: 1000,
+    autoClose: 2000,
     hideProgressBar: true, // Set hideProgressBar to true
     closeOnClick: true,
     pauseOnHover: true,

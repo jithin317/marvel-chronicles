@@ -4,59 +4,74 @@ import Title from "../../components/Headings/title";
 import SubTitle from "../../components/Headings/subtitle";
 import InputField from "../../components/forms/inputField";
 import { Form, Formik } from "formik";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import Image from "../../components/Image/image";
-import IronManImg from "../../assets/images/iron_man.png";
+import CapImg from "../../assets/images/cap_america.png";
 import { AuthButton, GoogleButton } from "../../components/buttons/buttons";
 import { HandleGoogleCreds } from "../../utils/auth-handlers/google-creds";
-import { HandleLogin } from "../../utils/auth-handlers/login-handler";
+import { HandleSignUp } from "../../utils/auth-handlers/signup-handler";
 
-
-export default function Login() {
+export default function SignUp() {
   const navigate = useNavigate();
+
   const initialValues = {
+    username: "",
     email: "",
     password: "",
   };
   const validationSchema = Yup.object({
+    username: Yup.string()
+      .required("Username is required!")
+      .min(8, "Must be minimum 8 characters long!")
+      .max(20, "Must be maximum 20 characters long!"),
     email: Yup.string()
       .email("Must be a valid email!")
       .required("Email is required!"),
-    password: Yup.string().required("Password is required!"),
+    password: Yup.string()
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
+        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
+      )
+      .required("Password is required!"),
   });
 
-  // onAuthStateChanged(Auth, (user) => {
-  //   if (user) {
-  //     console.log(user);
-  //     console.log("Signed In");
-  //   } else {
-  //     console.log("no user signed in");
-  //   }
-  // });
   return (
-    <div className="flex min-h-screen justify-center">
+    <div className="flex justify-center min-h-screen">
+      <Image
+        src={CapImg}
+        className="max-w-sm lg:max-w-lg pointer-events-none relative hidden md:block"
+      />
       <div className="flex flex-col items-center justify-center w-full md:w-8/12">
-        <div className="flex flex-col p-3 gap-[1rem] w-full md:w-[25rem]">
+        <div className="flex flex-col p-3 gap-[1rem] w-full md:max-w-[25rem]">
           <div className="flex flex-col gap-3">
-            <Title text="Log In" className="text-4xl fw_600" />
-            <SubTitle text="Welome back! Please enter your details." />
+            <Title text="Sign Up" className="text-4xl fw_600" />
+            <SubTitle text="Start your free trail today." />
           </div>
           <Formik
             enableReinitialize={true}
             initialValues={initialValues}
             validationSchema={validationSchema}
-            onSubmit={(values) => HandleLogin(values, navigate)}
+            onSubmit={(values) => HandleSignUp(values, navigate)}
           >
             {({ values }) => {
               return (
                 <Form className="flex flex-col">
+                  <InputField
+                    id="username"
+                    label="Username"
+                    name="username"
+                    type="text"
+                    placeholder="Enter your username"
+                    xVal={80}
+                  />
                   <InputField
                     id="email"
                     label="Email"
                     name="email"
                     type="text"
                     placeholder="Enter your email"
-                    xVal={80}
+                    xVal={-80}
                   />
                   <InputField
                     id="password"
@@ -65,17 +80,13 @@ export default function Login() {
                     type="password"
                     placeholder="Your password"
                     isPassword={true}
-                    xVal={-80}
+                    xVal={80}
+                    passwordCheck={true}
                   />
-                  <div className="text-left mb-3">
-                    <Link to="#" className="blue font-semibold text-sm">
-                      Forgot Password?
-                    </Link>
-                  </div>
                   <div>
                     <AuthButton
                       type="submit"
-                      text="Sign in"
+                      text="Create Account"
                       className="secondary-bg text-white w-full"
                     />
                   </div>
@@ -83,21 +94,20 @@ export default function Login() {
               );
             }}
           </Formik>
-          <GoogleButton onClkFn={HandleGoogleCreds} />
+          <GoogleButton
+            text="Sign up with Google"
+            onClkFn={() => HandleGoogleCreds(navigate)}
+          />
           <div className="text-center text-sm fw_500">
             <p className="light_gray">
-              Don't have an account?{" "}
-              <Link to="/signup" className="blue">
-                Sign up
+              Already have an account?{" "}
+              <Link to="/login" className="blue">
+                Log in
               </Link>
             </p>
           </div>
         </div>
       </div>
-      <Image
-        src={IronManImg}
-        className="max-w-sm lg:max-w-lg pointer-events-none relative hidden md:block"
-      />
     </div>
   );
 }

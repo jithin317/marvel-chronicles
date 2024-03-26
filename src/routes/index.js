@@ -4,6 +4,7 @@ import MainLayout from "../components/layouts/main-layout";
 import Characters from "../modules/CharactersPage/Characters";
 import Home from "../modules/HomePage/Home";
 import Login from "../modules/Auth-section/login";
+import SignUp from "../modules/Auth-section/signup";
 
 export default function Index() {
   const router = createBrowserRouter([
@@ -24,6 +25,10 @@ export default function Index() {
     {
       path: "/login",
       element: <Login />,
+    },
+    {
+      path: "/signup",
+      element: <SignUp />,
     },
   ]);
   return <RouterProvider router={router} />;

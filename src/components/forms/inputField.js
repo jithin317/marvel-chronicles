@@ -71,7 +71,7 @@ export default function InputField({
               )}
             </div>
             {passwordCheck && (
-              <div className="flex flex-wrap gap-2 text-xs w-[20rem] mt-3">
+              <div className="flex flex-wrap gap-2 text-xs w-[20rem] m-3">
                 <p
                   className={
                     meta.touched && meta.value.length < 8
