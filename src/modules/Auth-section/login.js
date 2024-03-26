@@ -83,7 +83,7 @@ export default function Login() {
               );
             }}
           </Formik>
-          <GoogleButton onClkFn={HandleGoogleCreds} />
+          <GoogleButton onClkFn={() => HandleGoogleCreds(navigate)} />
           <div className="text-center text-sm fw_500">
             <p className="light_gray">
               Don't have an account?{" "}

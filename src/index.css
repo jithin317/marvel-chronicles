@@ -74,14 +74,14 @@ code {
 .light_gray {
   color: #475467;
 }
-.dark_gray{
+.dark_gray {
   color: #344054;
 }
 .blue {
   color: #6941c6;
 }
-.red{
-  color: #F04438;
+.red {
+  color: #f04438;
 }
 
 /* Backgrounds */
@@ -98,9 +98,30 @@ code {
 
 /* Form Styles */
 
-.light_border{
-  border: 1px solid #D0D5DD;
+.light_border {
+  border: 1px solid #d0d5dd;
 }
-.warning_border{
-  border: 1px solid #FDA29B;
+.warning_border {
+  border: 1px solid #fda29b;
+}
+
+/* Navbar Style */
+.sticky-nav {
+  animation: sticky-nav 300ms;
+}
+
+@keyframes sticky-nav {
+  0% {
+    transform: translateY(-6em);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+/* Text Stroke Effect */
+.strokedText {
+  color: transparent;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
 }

@@ -5,6 +5,8 @@ import Characters from "../modules/CharactersPage/Characters";
 import Home from "../modules/HomePage/Home";
 import Login from "../modules/Auth-section/login";
 import SignUp from "../modules/Auth-section/signup";
+import AuthContext from "../context/auth-context";
+import ProtectedRoute from "./protected-route";
 
 export default function Index() {
   const router = createBrowserRouter([
@@ -13,12 +15,17 @@ export default function Index() {
       element: <MainLayout />,
       children: [
         {
-          path: "/",
+          index: true,
           element: <Home />,
         },
         {
           path: "characters",
-          element: <Characters />,
+          element: (
+            <ProtectedRoute>
+              {" "}
+              <Characters />
+            </ProtectedRoute>
+          ),
         },
       ],
     },
@@ -31,5 +38,9 @@ export default function Index() {
       element: <SignUp />,
     },
   ]);
-  return <RouterProvider router={router} />;
+  return (
+    <AuthContext>
+      <RouterProvider router={router} />
+    </AuthContext>
+  );
 }
