@@ -6,5 +6,5 @@ export default function HeroTitle({
   className = "uppercase text-[5rem] leading-none tracking-tighter lg:text-9xl font-bold ",
   children,
 }) {
-  return <p className={`${color} ${className} `}>{children}</p>;
+  return <span className={`${color} ${className} `}>{children}</span>;
 }

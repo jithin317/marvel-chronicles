@@ -1,19 +1,18 @@
-import React, { useContext, useState } from "react";
-import { Auth } from "../../utils/firebase/firebaseConfig";
-import { UserContext } from "../../context/auth-context";
+import React, { useState } from "react";
 import VenomImg from "../../assets/images/Venom_img.png";
-import { signOut } from "firebase/auth";
 import HeroTitle from "../../components/main/hero";
-import Paragraph from "./Paragraph";
+import Paragraph from "../../components/main/Paragraph";
 import { TextGenerateEffect } from "../../components/ui/textgenerateEffect";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
+import MainHeading from "../../components/Headings/main-heading";
+import { CheckedIcon, RejectIcon } from "../../assets/icons/home-icons/icons";
 
 export default function Home() {
   return (
-    <div className="">
+    <div>
       <SlideOne />
       <SlideTwo />
-      {/* <div className="h-[20vh] border-2 border-rose-900">Hello</div> */}
+      <SlideFour />
     </div>
   );
 }
@@ -31,7 +30,8 @@ const SlideOne = () => {
           </Paragraph>
         </div>
       </div>
-      <div className="overlay w-full h-full absolute top-0 left-0 bg-[#040507] bg-opacity-50 z-[20] md:hidden"></div>
+      <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-t from-zinc-900 to-transparent z-[20] md:hidden"></div>
+      <div className="w-full h-[2rem] absolute bottom-0 left-0 bg-gradient-to-b from-zinc-900 to-white z-[5]"></div>
       <motion.div
         initial={{ x: -80 }}
         whileInView={{ x: 0 }}
@@ -146,19 +146,13 @@ const SlideTwo = () => {
   return (
     <section className="py-14">
       <div className="max-w-screen-xl flex flex-col items-center text-center mx-auto px-4 text-light_gray md:px-8">
-        <div className="max-w-xl text-center space-y-3">
-          <h3 className="text-red font-semibold">About</h3>
-          <div className="text-dark text-3xl font-semibold sm:text-4xl">
-            <TextGenerateEffect words="About Marvel Chronicles" />
-          </div>
-          <div>
-            <TextGenerateEffect
-              words=" Learn about the inspiration behind Marvel Chronicles, our dedication
+        <MainHeading
+          heading="About"
+          subheading="About Marvel Chronicles"
+          content="Learn about the inspiration behind Marvel Chronicles, our dedication
             to bringing the Marvel universe to life, and how you can join the
             excitement"
-            />
-          </div>
-        </div>
+        />
         <div className="mt-12">
           <motion.ul
             variants={container}
@@ -191,7 +185,7 @@ const SlideTwo = () => {
                 <AnimatePresence>
                   {selectId && (
                     <motion.div
-                      className="fixed  flex items-center justify-center inset-0 bg-opacity-50 bg-black"
+                      className="fixed  flex items-center justify-center inset-0 bg-opacity-50 bg-black z-[10]"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -223,6 +217,144 @@ const SlideTwo = () => {
               </LayoutGroup>
             ))}
           </motion.ul>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const SlideFour = () => {
+  const plans = [
+    {
+      name: "Basic plan",
+      price: 0,
+      features: [
+        {
+          access: true,
+          item: "Access to basic content",
+        },
+        {
+          access: true,
+          item: "Add liked content",
+        },
+        {
+          access: true,
+          item: "Exclusive content access",
+        },
+        {
+          access: false,
+          item: "Ad customization",
+        },
+        {
+          access: false,
+          item: "Social sharing",
+        },
+        {
+          access: false,
+          item: "Community engagement access",
+        },
+      ],
+    },
+    {
+      name: "Standard plan",
+      price: 45,
+      features: [
+        {
+          access: true,
+          item: "Access to basic content",
+        },
+        {
+          access: true,
+          item: "Add liked content",
+        },
+        {
+          access: true,
+          item: "Exclusive content access",
+        },
+        {
+          access: true,
+          item: "Ad customization",
+        },
+        {
+          access: true,
+          item: "Social sharing",
+        },
+        {
+          access: false,
+          item: "Community engagement access",
+        },
+      ],
+    },
+    {
+      name: "Premier plan",
+      price: 75,
+      features: [
+        {
+          access: true,
+          item: "Access to basic content",
+        },
+        {
+          access: true,
+          item: "Add liked content",
+        },
+        {
+          access: true,
+          item: "Exclusive content access",
+        },
+        {
+          access: true,
+          item: "Ad customization",
+        },
+        {
+          access: true,
+          item: "Social sharing",
+        },
+        {
+          access: true,
+          item: "Community engagement access",
+        },
+      ],
+    },
+  ];
+
+  return (
+    <section className="py-14">
+      <div className="max-w-screen-xl flex flex-col items-center mx-auto px-4 text-gray-600 md:px-8">
+        <MainHeading
+          heading="Pricing"
+          subheading="Explore Membership Plans"
+          content="Discover our membership plans tailored to Marvel fans. Unlock exclusive content, access premium features, and immerse yourself in the ultimate Marvel experience"
+        />
+        <div className="mt-16 space-y-6 justify-self-center gap-6 sm:grid sm:grid-cols-1 sm:space-y-0 lg:grid-cols-3">
+          {plans.map((item, idx) => (
+            <div
+              key={idx}
+              className="relative flex-1 shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-stretch flex-col p-8 rounded-xl border-2"
+            >
+              <div className="text-center">
+                <span className="text-red font-medium">{item.name}</span>
+                <div className="mt-4 text-gray-800 text-3xl font-semibold">
+                  ₹{item.price}{" "}
+                  <span className="text-xl text-gray-600 font-normal">
+                    /mth
+                  </span>
+                </div>
+              </div>
+              <ul className="py-8 space-y-3">
+                {item.features.map((featureItem, idx) => (
+                  <li key={idx} className="flex items-center gap-5">
+                    {featureItem.access ? <CheckedIcon /> : <RejectIcon />}
+                    {featureItem.item}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex-1 flex items-end">
+                <button className="px-3 py-3 rounded-lg w-full font-semibold text-sm duration-150 text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700">
+                  Get Started
+                </button>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

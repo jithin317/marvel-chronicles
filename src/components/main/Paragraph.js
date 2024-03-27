@@ -6,5 +6,5 @@ export default function Paragraph({
   className = "text-xl p-3",
   children,
 }) {
-  return <p className={`${color} ${className} text-right`}>{children}</p>;
+  return <span className={`${color} ${className} text-right`}>{children}</span>;
 }

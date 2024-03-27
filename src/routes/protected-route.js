@@ -1,9 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { UserContext } from "../context/auth-context";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 export default function ProtectedRoute({ children }) {
   const { user } = useContext(UserContext);
-  console.log(user);
-  return user ? children : <Navigate to={"/login"} />;
+  const location = useLocation();
+  useEffect(() => {
+    if (!user) {
+      localStorage.setItem("redirectUrl", location.pathname);
+    }
+  }, [user, location.pathname]);
+
+  return user ? children : <Navigate to={"/login"} replace />;
 }

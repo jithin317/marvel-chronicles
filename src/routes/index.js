@@ -7,6 +7,8 @@ import Login from "../modules/Auth-section/login";
 import SignUp from "../modules/Auth-section/signup";
 import AuthContext from "../context/auth-context";
 import ProtectedRoute from "./protected-route";
+import Comics from "../modules/ComicsPage/comics-page";
+import NoRoutePage from "../modules/NoRoutePage/NoRoutePage";
 
 export default function Index() {
   const router = createBrowserRouter([
@@ -22,8 +24,15 @@ export default function Index() {
           path: "characters",
           element: (
             <ProtectedRoute>
-              {" "}
               <Characters />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "comics",
+          element: (
+            <ProtectedRoute>
+              <Comics />
             </ProtectedRoute>
           ),
         },
@@ -36,6 +45,14 @@ export default function Index() {
     {
       path: "/signup",
       element: <SignUp />,
+    },
+    {
+      path: "*",
+      element: (
+        <ProtectedRoute>
+          <NoRoutePage />
+        </ProtectedRoute>
+      ),
     },
   ]);
   return (

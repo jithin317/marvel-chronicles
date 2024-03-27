@@ -43,7 +43,7 @@ export default function SignUp() {
         className="max-w-sm lg:max-w-lg pointer-events-none relative hidden md:block"
       />
       <div className="flex flex-col items-center justify-center w-full md:w-8/12">
-        <div className="flex flex-col p-3 gap-[1rem] w-full md:max-w-[25rem]">
+        <div className="flex flex-col p-3 gap-[1rem] max-w-[25rem]">
           <div className="flex flex-col gap-3">
             <Title text="Sign Up" className="text-4xl fw_600" />
             <SubTitle text="Start your free trail today." />

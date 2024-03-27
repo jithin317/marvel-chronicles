@@ -36,7 +36,7 @@ export default function Login() {
   return (
     <div className="flex min-h-screen justify-center">
       <div className="flex flex-col items-center justify-center w-full md:w-8/12">
-        <div className="flex flex-col p-3 gap-[1rem] w-full md:w-[25rem]">
+        <div className="flex flex-col p-3 gap-[1rem] md:w-[25rem]">
           <div className="flex flex-col gap-3">
             <Title text="Log In" className="text-4xl fw_600" />
             <SubTitle text="Welome back! Please enter your details." />

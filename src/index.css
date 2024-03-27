@@ -125,3 +125,9 @@ code {
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: white;
 }
+/* SVG Styles */
+.svg-icon path,
+.svg-icon polygon,
+.svg-icon rect {
+  fill: currentColor;
+}

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import {
   CancelIcon,
   HamburgerIcon,
@@ -8,17 +8,21 @@ import {
 import { motion } from "framer-motion";
 import { UserContext } from "../../context/auth-context";
 import { InfoToast } from "../helpers/toast-container";
+import { signOut } from "firebase/auth";
+import { Auth } from "../../utils/firebase/firebaseConfig";
+import ProfileDropDown from "../ui/profile-dropdown";
 
 export default function SideBar() {
   const [state, setState] = useState(false);
   const navRef = useRef();
-  const { user, logOut } = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const navigation = [
     { title: "Home", path: "/" },
     { title: "Characters", path: "/characters" },
-    { title: "Comics", path: "/" },
-    { title: "Series", path: "/" },
+    { title: "Comics", path: "/comics" },
+    { title: "Series", path: "/series" },
   ];
 
   useEffect(() => {
@@ -28,8 +32,10 @@ export default function SideBar() {
     else body.classList.remove(...customBodyStyle);
     const customStyle = ["sticky-nav", "fixed", "border-r"];
     window.onscroll = () => {
-      if (window.scrollY > 80) navRef.current.classList.add(...customStyle);
-      else navRef.current.classList.remove(...customStyle);
+      if (navRef.current) {
+        if (window.scrollY > 80) navRef.current?.classList.add(...customStyle);
+        else navRef.current?.classList.remove(...customStyle);
+      }
     };
   }, [state]);
 
@@ -52,13 +58,17 @@ export default function SideBar() {
     },
   };
 
-  function handleSignOut() {
-    InfoToast({ message: "Please Wait.." });
-    setTimeout(() => {
-      logOut();
-    }, 2000);
+  async function handleSignOut() {
+    try {
+      await signOut(Auth);
+      InfoToast({ message: "Logged Out Successfully" });
+      navigate("/");
+      setUser(null);
+    } catch (error) {
+      console.log(error);
+    }
   }
-
+  console.log(user);
   return (
     <nav ref={navRef} className="bg-[#040507] w-full top-0 z-[999]">
       <div className="items-center px-4 max-w-screen-xl mx-auto md:px-8 lg:flex">
@@ -83,8 +93,8 @@ export default function SideBar() {
           </div>
         </div>
         <div
-          className={`flex-1 justify-between flex-row-reverse lg:overflow-visible lg:flex lg:pb-0 lg:pr-0 lg:h-auto ${
-            state ? "h-screen pb-40 overflow-auto pr-4" : "hidden"
+          className={`flex-1 justify-between flex flex-col-reverse lg:flex-row-reverse lg:overflow-visible lg:flex lg:pb-0 lg:pr-0 lg:h-auto ${
+            state ? "h-screen pb-40 overflow-auto" : "hidden"
           }`}
         >
           {!user ? (
@@ -116,40 +126,29 @@ export default function SideBar() {
               </motion.ul>
             </div>
           ) : (
-            <div>
-              <motion.ul
-                variants={link}
-                viewport={{ once: true }}
-                initial="hidden"
-                whileInView="visible"
-                transition={{ delay: 1.8, duration: 0.8 }}
-                className="flex flex-col-reverse space-x-0 lg:space-x-4 lg:flex-row"
-              >
-                <motion.li className="mt-8 lg:mt-0">
-                  <Link
-                    onClick={handleSignOut}
-                    to={"#"}
-                    className="py-3 px-5 text-center text-light bg-red hover:bg-red rounded-md shadow block lg:inline"
-                  >
-                    Log Out
-                  </Link>
-                </motion.li>
-              </motion.ul>
+            <div className="border-t border-gray-500 md:border-0">
+              <ProfileDropDown
+                imgURL={user?.photoURL || undefined}
+                name={user?.displayName}
+                email={user?.email}
+                signOut={handleSignOut}
+              />
             </div>
           )}
-          <div className="flex-1 text-center mt-10 lg:mt-0">
+          <div className="flex-1 text-center lg:divide-x-0 mt-10 lg:mt-2">
             <motion.ul
               variants={container}
               viewport={{ once: true }}
               initial="hidden"
               whileInView="visible"
-              className="justify-center items-center space-y-24 lg:flex lg:space-x-20 lg:space-y-0"
+              className="justify-center items-center  space-y-24 lg:flex lg:space-x-20 lg:space-y-0"
             >
               {navigation.map((item, index) => {
                 return (
                   <motion.li
                     variants={link}
                     key={index}
+                    onClick={() => setState(false)}
                     className="text-light font-medium hover:text-light_red"
                   >
                     <Link to={item.path}>{item.title.toUpperCase()}</Link>
