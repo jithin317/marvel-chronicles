@@ -13,13 +13,15 @@ export default function InputField({
   type = "text",
   isPassword = false,
   passwordCheck = false,
+  isTextArea = false,
   name = "",
   id = "",
   inputClassName = "py-[0.5rem] px-[0.8rem] rounded-md outline-none ",
   labelClassName = "text-sm",
-  placeholder = "Enter something",
+  placeholder = "",
   passwordCheckClass = "flex items-center justify-center gap-1",
   xVal = 20,
+  textAreaClassName = "",
 }) {
   const [eyeIsOpen, setEyeIsOpen] = useState(false);
   const item = {
@@ -50,17 +52,30 @@ export default function InputField({
               >
                 {label}
               </label>
-              <input
-                type={isPassword ? (eyeIsOpen ? "text" : type) : type}
-                id={id}
-                {...field}
-                className={
-                  meta.touched && meta.error
-                    ? inputClassName + " border warning_border"
-                    : "border light_border " + inputClassName
-                }
-                placeholder={placeholder}
-              />
+              {!isTextArea && (
+                <input
+                  type={isPassword ? (eyeIsOpen ? "text" : type) : type}
+                  id={id}
+                  {...field}
+                  className={
+                    meta.touched && meta.error
+                      ? inputClassName + " border warning_border"
+                      : "border light_border " + inputClassName
+                  }
+                  placeholder={placeholder}
+                />
+              )}
+              {isTextArea && (
+                <textarea
+                  className={
+                    meta.touched && meta.error
+                      ? textAreaClassName + " border warning_border"
+                      : "border light_border " + textAreaClassName
+                  }
+                  id={id}
+                  {...field}
+                />
+              )}
               {isPassword && (
                 <a
                   className="absolute right-[3%] top-[50%] cursor-pointer"

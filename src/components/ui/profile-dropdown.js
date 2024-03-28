@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import dummyImg from "../../assets/images/dummy_img.jpg";
+import BounceEffect from "./bounceEffect";
 
 export default function ProfileDropDown({
   className = "",
@@ -23,17 +24,19 @@ export default function ProfileDropDown({
   return (
     <div className={`relative p-2 md:p-0 ${className}`}>
       <div className="flex items-center space-x-8">
-        <button
-          ref={profileRef}
-          className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:ring-red"
-          onClick={() => setState(!state)}
-        >
-          <img
-            src={imgURL}
-            className="w-full h-full rounded-full pointer-events-none"
-            alt="User_img"
-          />
-        </button>
+        <BounceEffect>
+          <button
+            ref={profileRef}
+            className="w-10 h-10 outline-none rounded-full ring-offset-2 ring-gray-200 ring-2 lg:focus:ring-red"
+            onClick={() => setState(!state)}
+          >
+            <img
+              src={imgURL}
+              className="w-full h-full rounded-full pointer-events-none"
+              alt="User_img"
+            />
+          </button>
+        </BounceEffect>
         <div className="lg:hidden">
           <span className="block text-light">{name}</span>
           <span className="text-sm text-gray-400">{email}</span>

@@ -7,6 +7,7 @@ export default function MainHeading({
   content = "",
   headingClass = "text-red font-semibold",
   subHeadingClass = "text-dark text-3xl font-semibold sm:text-4xl",
+  contentClass = "text-[14px] md:text-[15px]",
 }) {
   return (
     <div className={"max-w-xl text-center space-y-3"}>
@@ -14,7 +15,7 @@ export default function MainHeading({
       <div className={subHeadingClass}>
         <TextGenerateEffect words={subheading} />
       </div>
-      <div>
+      <div className={contentClass}>
         <TextGenerateEffect words={content} />
       </div>
     </div>

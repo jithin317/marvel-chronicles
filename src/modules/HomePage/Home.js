@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import VenomImg from "../../assets/images/Venom_img.png";
 import HeroTitle from "../../components/main/hero";
 import Paragraph from "../../components/main/Paragraph";
@@ -6,6 +6,15 @@ import { TextGenerateEffect } from "../../components/ui/textgenerateEffect";
 import { AnimatePresence, LayoutGroup, motion } from "framer-motion";
 import MainHeading from "../../components/Headings/main-heading";
 import { CheckedIcon, RejectIcon } from "../../assets/icons/home-icons/icons";
+import BounceEffect from "../../components/ui/bounceEffect";
+import StrokedTextEffect from "../../components/ui/strokedTextEffect";
+import spideyIMG from "../../assets/images/moonKnight.png";
+import { Formik } from "formik";
+import * as Yup from "yup";
+import ContactForm from "../../components/forms/contact-form";
+import { UserContext } from "../../context/auth-context";
+import { WarnToast } from "../../components/helpers/toast-container";
+import AddDoc from "../../utils/addDocuments/add-doc";
 
 export default function Home() {
   return (
@@ -13,6 +22,7 @@ export default function Home() {
       <SlideOne />
       <SlideTwo />
       <SlideFour />
+      <SlideFive />
     </div>
   );
 }
@@ -23,7 +33,7 @@ const SlideOne = () => {
       <div className="flex items-end h-[85vh] md:h-auto md:items-center lg:p-12 z-[30]">
         <div className="flex flex-col gap-2 items-center justify-end p-3 mb-8 w-full lg:w-[35rem]">
           <HeroTitle>
-            <TextGenerateEffect words="new comics today" />
+            New c<span className="strokeText">omic</span>s today
           </HeroTitle>
           <Paragraph>
             <TextGenerateEffect words="see what comics are in your local book and recap the last few issues" />
@@ -32,14 +42,7 @@ const SlideOne = () => {
       </div>
       <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-t from-zinc-900 to-transparent z-[20] md:hidden"></div>
       <div className="w-full h-[2rem] absolute bottom-0 left-0 bg-gradient-to-b from-zinc-900 to-white z-[5]"></div>
-      <motion.div
-        initial={{ x: -80 }}
-        whileInView={{ x: 0 }}
-        transition={{ duration: 0.7, delay: 0.5 }}
-        className="absolute top-[45%] md:top-[20%] left-10 w-[40rem] opacity-40 strokedText uppercase text-[5.5rem] lg:text-[12rem] leading-tight font-semibold pointer-events-none select-none z-[10]"
-      >
-        Marvel Comics
-      </motion.div>
+      <StrokedTextEffect>Marvel Comics</StrokedTextEffect>
       <div className="w-full absolute top-0 left-0 h-full md:h-auto md:max-w-md lg:max-w-xl md:relative z-0">
         <motion.img
           initial={{ y: 30, opacity: 0 }}
@@ -163,25 +166,27 @@ const SlideTwo = () => {
           >
             {features.map((item) => (
               <LayoutGroup key={item.id}>
-                <motion.li
-                  key={item.id}
-                  variants={link}
-                  className={`feature-${
-                    item.id + 1
-                  } space-y-3 py-8 lg:px-8 sm:py-0 cursor-pointer`}
-                  layoutId={item.id}
-                  onClick={() => setSelectId(item.id)}
-                >
-                  <div className="w-12 h-12 mx-auto bg-gray-100 text-white p-7 rounded-full flex items-center justify-center">
-                    <div className="bg-rose-100 text-red p-2 rounded-full">
-                      {item.icon}
+                <BounceEffect>
+                  <motion.li
+                    key={item.id}
+                    variants={link}
+                    className={`feature-${
+                      item.id + 1
+                    } space-y-3 py-8 lg:px-8 sm:py-0 cursor-pointer`}
+                    layoutId={item.id}
+                    onClick={() => setSelectId(item.id)}
+                  >
+                    <div className="w-12 h-12 mx-auto bg-gray-100 text-white p-7 rounded-full flex items-center justify-center">
+                      <div className="bg-rose-100 text-red p-2 rounded-full">
+                        {item.icon}
+                      </div>
                     </div>
-                  </div>
-                  <h4 className="text-dark_gray text-gray-800 font-semibold">
-                    {item.title}
-                  </h4>
-                  <p>{item.desc}</p>
-                </motion.li>
+                    <h4 className="text-dark_gray text-gray-800 font-semibold">
+                      {item.title}
+                    </h4>
+                    <p>{item.desc}</p>
+                  </motion.li>
+                </BounceEffect>
                 <AnimatePresence>
                   {selectId && (
                     <motion.div
@@ -317,6 +322,25 @@ const SlideFour = () => {
     },
   ];
 
+  const container = {
+    hidden: {},
+    visible: {
+      transition: {
+        delayChildren: 0.2,
+        staggerChildren: 0.5,
+        duration: 1.4,
+      },
+    },
+  };
+
+  const link = {
+    hidden: { y: 40, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+    },
+  };
+
   return (
     <section className="py-14">
       <div className="max-w-screen-xl flex flex-col items-center mx-auto px-4 text-gray-600 md:px-8">
@@ -325,11 +349,19 @@ const SlideFour = () => {
           subheading="Explore Membership Plans"
           content="Discover our membership plans tailored to Marvel fans. Unlock exclusive content, access premium features, and immerse yourself in the ultimate Marvel experience"
         />
-        <div className="mt-16 space-y-6 justify-self-center gap-6 sm:grid sm:grid-cols-1 sm:space-y-0 lg:grid-cols-3">
+        <motion.div
+          variants={container}
+          viewport={{ once: true }}
+          initial="hidden"
+          whileInView="visible"
+          className="mt-16 space-y-6 justify-self-center gap-6 sm:grid sm:grid-cols-2 sm:space-y-0 lg:grid-cols-3"
+        >
           {plans.map((item, idx) => (
-            <div
+            <motion.div
               key={idx}
-              className="relative flex-1 shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-stretch flex-col p-8 rounded-xl border-2"
+              variants={link}
+              transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              className="relative flex-1 shadow-[0_8px_30px_rgb(0,0,0,0.12)] flex items-stretch flex-col p-8 rounded-xl border"
             >
               <div className="text-center">
                 <span className="text-red font-medium">{item.name}</span>
@@ -348,15 +380,75 @@ const SlideFour = () => {
                   </li>
                 ))}
               </ul>
-              <div className="flex-1 flex items-end">
+              <BounceEffect className="flex-1 flex items-end">
                 <button className="px-3 py-3 rounded-lg w-full font-semibold text-sm duration-150 text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700">
                   Get Started
                 </button>
-              </div>
-            </div>
+              </BounceEffect>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
+  );
+};
+
+const SlideFive = () => {
+  const { user } = useContext(UserContext);
+  const initialValues = {
+    fullname: "",
+    email: "",
+    message: "",
+  };
+  const validationSchema = Yup.object({
+    fullname: Yup.string()
+      .required("Fullname is required")
+      .min(8, "Must be 8 characters minimum")
+      .max(40, "Must be 40 characters maximum"),
+    email: Yup.string()
+      .email("Must be a valid email!")
+      .required("Email is required!"),
+    message: Yup.string()
+      .required("Message is required")
+      .min(12, "Must be 12 characters minimum")
+      .max(120, "Must be 120 characters maximum"),
+  });
+  async function handleSubmit(values, { resetForm }) {
+    if (!user) {
+      WarnToast({ message: "Please Login to Submit..." });
+    } else {
+      const { fullname, email, message } = values;
+      await AddDoc(values);
+      resetForm();
+    }
+  }
+  return (
+    <main className="flex max-w-screen-xl mx-auto  overflow-hidden">
+      <div className="flex-1 rounded-lg  max-w-2xl hidden lg:block">
+        <img
+          src={spideyIMG}
+          className="w-full h-screen rounded-full object-cover pointer-events-none"
+        />
+      </div>
+      <div className="py-12 flex-1 lg:flex lg:justify-center lg:h-screen lg:overflow-auto">
+        <div className="max-w-md md:max-w-xl flex-1 mx-auto px-4 text-gray-600">
+          <MainHeading
+            heading=""
+            subheading="Get in touch"
+            content="Have questions or feedback? Contact us to connect with our team and share your thoughts. We're here to assist you with any inquiries."
+          />
+          <Formik
+            enableReinitialize={true}
+            initialValues={initialValues}
+            validationSchema={validationSchema}
+            onSubmit={handleSubmit}
+          >
+            {({ values }) => {
+              return <ContactForm />;
+            }}
+          </Formik>
+        </div>
+      </div>
+    </main>
   );
 };

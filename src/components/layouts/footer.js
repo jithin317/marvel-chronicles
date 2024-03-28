@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { LogoIcon } from "../../assets/icons/home-icons/icons";
 import { motion } from "framer-motion";
+import BounceEffect from "../ui/bounceEffect";
 
 export default function Footer() {
   const footerNavs = [
@@ -90,7 +91,7 @@ export default function Footer() {
   };
 
   const link = {
-    hidden: { opacity: 0, y: 30 },
+    hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
@@ -124,13 +125,15 @@ export default function Footer() {
           className="items-center justify-center mt-8 space-y-5 sm:flex sm:space-x-4 sm:space-y-0"
         >
           {footerNavs.map((item, idx) => (
-            <motion.li
-              key={idx}
-              variants={link}
-              className="hover:text-red w-fit"
-            >
-              <a href={item.href}>{item.name}</a>
-            </motion.li>
+            <BounceEffect key={idx}>
+              <motion.li
+                key={idx}
+                variants={link}
+                className="hover:text-red w-fit"
+              >
+                <a href={item.href}>{item.name}</a>
+              </motion.li>
+            </BounceEffect>
           ))}
         </motion.ul>
         <div className="mt-8 items-center justify-between sm:flex">
@@ -141,7 +144,7 @@ export default function Footer() {
               .<i> &copy; {new Date().getFullYear()} MARVEL</i>
             </Link>
           </div>
-          <div className="mt-6 sm:mt-0 overflow-hidden">
+          <div className="mt-6 sm:mt-0">
             <motion.ul
               variants={container}
               viewport={{ once: true }}
@@ -151,13 +154,15 @@ export default function Footer() {
             >
               {iconLinks.map((icon, idx) => {
                 return (
-                  <motion.li
-                    variants={link}
-                    key={idx}
-                    className="w-10 h-10 border rounded-full flex items-center justify-center"
-                  >
-                    <a href={icon.href}>{icon.svg}</a>
-                  </motion.li>
+                  <BounceEffect key={idx}>
+                    <motion.li
+                      variants={link}
+                      key={idx}
+                      className="w-10 h-10 border rounded-full flex items-center justify-center"
+                    >
+                      <a href={icon.href}>{icon.svg}</a>
+                    </motion.li>
+                  </BounceEffect>
                 );
               })}
             </motion.ul>

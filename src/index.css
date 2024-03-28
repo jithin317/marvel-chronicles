@@ -122,8 +122,13 @@ code {
 /* Text Stroke Effect */
 .strokedText {
   color: transparent;
-  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-width: 0.8px;
   -webkit-text-stroke-color: white;
+}
+.strokeText{
+  color: transparent;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: #f04438;
 }
 /* SVG Styles */
 .svg-icon path,

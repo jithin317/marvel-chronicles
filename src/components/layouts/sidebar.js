@@ -11,6 +11,7 @@ import { InfoToast } from "../helpers/toast-container";
 import { signOut } from "firebase/auth";
 import { Auth } from "../../utils/firebase/firebaseConfig";
 import ProfileDropDown from "../ui/profile-dropdown";
+import BounceEffect from "../ui/bounceEffect";
 
 export default function SideBar() {
   const [state, setState] = useState(false);
@@ -78,18 +79,21 @@ export default function SideBar() {
             initial={"hidden"}
             animate={"visible"}
             transition={{ duration: 0.6, delay: 0.5 }}
+            className="grow flex justify-center"
           >
             <Link to="/">
               <LogoIcon />
             </Link>
           </motion.div>
           <div className="lg:hidden">
-            <button
-              className="text-light outline-none p-2 border border-transparent rounded-md focus:border-gray-400 focus:border"
-              onClick={() => setState(!state)}
-            >
-              {state ? <CancelIcon /> : <HamburgerIcon />}
-            </button>
+            <BounceEffect tapScale={0.75}>
+              <button
+                className="text-light outline-none p-2 border border-transparent rounded-md focus:border-gray-400 focus:border"
+                onClick={() => setState(!state)}
+              >
+                {state ? <CancelIcon /> : <HamburgerIcon />}
+              </button>
+            </BounceEffect>
           </div>
         </div>
         <div
@@ -107,22 +111,26 @@ export default function SideBar() {
                 transition={{ delay: 1.8, duration: 0.8 }}
                 className="flex flex-col-reverse space-x-0 lg:space-x-4 lg:flex-row"
               >
-                <motion.li className="mt-4 lg:mt-0">
-                  <Link
-                    to="/login"
-                    className="py-3 px-4 text-center border text-light rounded-md block lg:inline lg:border-0"
-                  >
-                    Login
-                  </Link>
-                </motion.li>
-                <motion.li className="mt-8 lg:mt-0">
-                  <Link
-                    to="/signup"
-                    className="py-3 px-5 text-center text-light bg-red hover:bg-red rounded-md shadow block lg:inline"
-                  >
-                    Sign Up
-                  </Link>
-                </motion.li>
+                <BounceEffect>
+                  <motion.li className="mt-4 lg:mt-0">
+                    <Link
+                      to="/login"
+                      className="py-3 px-4 text-center border text-light rounded-md block lg:inline lg:border-0"
+                    >
+                      Login
+                    </Link>
+                  </motion.li>
+                </BounceEffect>
+                <BounceEffect>
+                  <motion.li className="mt-8 lg:mt-0">
+                    <Link
+                      to="/signup"
+                      className="py-3 px-5 text-center text-light bg-red hover:bg-red rounded-md shadow block lg:inline"
+                    >
+                      Sign Up
+                    </Link>
+                  </motion.li>
+                </BounceEffect>
               </motion.ul>
             </div>
           ) : (
@@ -145,14 +153,16 @@ export default function SideBar() {
             >
               {navigation.map((item, index) => {
                 return (
-                  <motion.li
-                    variants={link}
-                    key={index}
-                    onClick={() => setState(false)}
-                    className="text-light font-medium hover:text-light_red"
-                  >
-                    <Link to={item.path}>{item.title.toUpperCase()}</Link>
-                  </motion.li>
+                  <BounceEffect key={index}>
+                    <motion.li
+                      variants={link}
+                      key={index}
+                      onClick={() => setState(false)}
+                      className="text-light font-medium hover:text-light_red"
+                    >
+                      <Link to={item.path}>{item.title.toUpperCase()}</Link>
+                    </motion.li>
+                  </BounceEffect>
                 );
               })}
             </motion.ul>
