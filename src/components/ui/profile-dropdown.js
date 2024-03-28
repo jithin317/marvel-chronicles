@@ -21,6 +21,8 @@ export default function ProfileDropDown({
     document.addEventListener("click", handleDropDown);
   }, []);
 
+  console.log(imgURL);
+
   return (
     <div className={`relative p-2 md:p-0 ${className}`}>
       <div className="flex items-center space-x-8">
@@ -31,7 +33,7 @@ export default function ProfileDropDown({
             onClick={() => setState(!state)}
           >
             <img
-              src={imgURL}
+              src={`${imgURL}`}
               className="w-full h-full rounded-full pointer-events-none"
               alt="User_img"
             />

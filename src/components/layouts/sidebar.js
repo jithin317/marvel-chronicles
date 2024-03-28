@@ -136,7 +136,7 @@ export default function SideBar() {
           ) : (
             <div className="border-t border-gray-500 md:border-0">
               <ProfileDropDown
-                imgURL={user?.photoURL || undefined}
+                imgURL={user ? user?.photoURL : undefined}
                 name={user?.displayName}
                 email={user?.email}
                 signOut={handleSignOut}

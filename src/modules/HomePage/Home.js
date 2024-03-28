@@ -15,12 +15,15 @@ import ContactForm from "../../components/forms/contact-form";
 import { UserContext } from "../../context/auth-context";
 import { WarnToast } from "../../components/helpers/toast-container";
 import AddDoc from "../../utils/addDocuments/add-doc";
+import herosIMG from "../../assets/images/herosImg.png";
+import NumberCountEffect from "../../components/ui/numberCountEffect";
 
 export default function Home() {
   return (
     <div>
       <SlideOne />
       <SlideTwo />
+      <SlideThree />
       <SlideFour />
       <SlideFive />
     </div>
@@ -29,31 +32,33 @@ export default function Home() {
 
 const SlideOne = () => {
   return (
-    <div className="bg-[#040507] flex justify-evenly relative overflow-hidden">
-      <div className="flex items-end h-[85vh] md:h-auto md:items-center lg:p-12 z-[30]">
-        <div className="flex flex-col gap-2 items-center justify-end p-3 mb-8 w-full lg:w-[35rem]">
-          <HeroTitle>
-            New c<span className="strokeText">omic</span>s today
-          </HeroTitle>
-          <Paragraph>
-            <TextGenerateEffect words="see what comics are in your local book and recap the last few issues" />
-          </Paragraph>
+    <section>
+      <div className="bg-[#040507] flex justify-evenly relative overflow-hidden">
+        <div className="flex items-end h-[85vh] md:h-auto md:items-center lg:p-12 z-[30]">
+          <div className="flex flex-col gap-2 items-center justify-end p-3 mb-8 w-full lg:w-[35rem]">
+            <HeroTitle>
+              New c<span className="strokeText">omic</span>s today
+            </HeroTitle>
+            <Paragraph>
+              <TextGenerateEffect words="see what comics are in your local book and recap the last few issues" />
+            </Paragraph>
+          </div>
+        </div>
+        <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-t from-zinc-900 to-transparent z-[20] md:hidden"></div>
+        <div className="w-full h-[2rem] absolute bottom-0 left-0 bg-gradient-to-b from-zinc-900 to-white z-[5]"></div>
+        <StrokedTextEffect>Marvel Comics</StrokedTextEffect>
+        <div className="w-full absolute top-0 left-0 h-full md:h-auto md:max-w-md lg:max-w-xl md:relative z-0">
+          <motion.img
+            initial={{ y: 30, opacity: 0 }}
+            viewport={{ once: true }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5, delay: 1 }}
+            src={VenomImg}
+            className="w-full h-full pointer-events-none"
+          />
         </div>
       </div>
-      <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-t from-zinc-900 to-transparent z-[20] md:hidden"></div>
-      <div className="w-full h-[2rem] absolute bottom-0 left-0 bg-gradient-to-b from-zinc-900 to-white z-[5]"></div>
-      <StrokedTextEffect>Marvel Comics</StrokedTextEffect>
-      <div className="w-full absolute top-0 left-0 h-full md:h-auto md:max-w-md lg:max-w-xl md:relative z-0">
-        <motion.img
-          initial={{ y: 30, opacity: 0 }}
-          viewport={{ once: true }}
-          whileInView={{ y: 0, opacity: 1 }}
-          transition={{ duration: 0.5, delay: 1 }}
-          src={VenomImg}
-          className="w-full h-full pointer-events-none"
-        />
-      </div>
-    </div>
+    </section>
   );
 };
 
@@ -222,6 +227,53 @@ const SlideTwo = () => {
               </LayoutGroup>
             ))}
           </motion.ul>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const SlideThree = () => {
+  const stats = [
+    {
+      startNumber: 150,
+      data: 220,
+      title: "Characters",
+    },
+    { startNumber: 380, data: 450, title: "Comics" },
+    { startNumber: 610, data: 680, title: "Series" },
+  ];
+
+  return (
+    <section className="py-14 bg-[#040507]">
+      <div className="max-w-screen-xl mx-auto px-4 text-gray-600 gap-x-12 items-start justify-between lg:flex md:px-8">
+        <div className="sm:hidden lg:block lg:max-w-xl">
+          <img src={herosIMG} className="rounded-lg" alt="Img" loading="lazy" />
+        </div>
+        <div className="mt-6 text-center5 gap-12 sm:mt-0 lg:block">
+          <div className="flex items-center justify-center">
+            <MainHeading
+              heading="stats"
+              subheading="Marvel Chronicles Stats"
+              subHeadingClass="text-light"
+              content="Discover key statistics like character count, series, and comic volumes in the Marvel Comics universe. Explore the vastness of Marvel's iconic stories and characters."
+            />
+          </div>
+          <div className="flex-none grid items-center text-center mt-6 md:mt-10 lg:mt-14">
+            <ul className="inline-grid gap-y-8 gap-x-12 md:gap-x-20 grid-cols-3">
+              {stats.map((item, idx) => (
+                <li key={idx} className="">
+                  {/* {item.data}+ */}
+                  <NumberCountEffect
+                    className="text-4xl md:text-5xl text-red font-semibold"
+                    startNumber={item.startNumber}
+                    endNumber={item.data}
+                  />
+                  <p className="mt-3 font-medium">{item.title}</p>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </div>
     </section>
