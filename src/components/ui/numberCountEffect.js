@@ -10,14 +10,17 @@ export default function NumberCountEffect({
   const count = useMotionValue(startNumber);
   const rounded = useTransform(count, Math.round);
 
-  useEffect(() => {
-    animate(count, endNumber, { duration: 4 });
-  }, []);
+  function handleVisible() {
+    animate(count, endNumber, { duration: 3 });
+    return { opacity: 1 };
+  }
+
+  useEffect(() => {}, []);
   return (
     <motion.div
       viewport={{ once: true }}
       initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
+      whileInView={handleVisible}
       className={className}
     >
       {rounded}

@@ -33,9 +33,9 @@ export default function Home() {
 const SlideOne = () => {
   return (
     <section>
-      <div className="bg-[#040507] flex justify-evenly relative overflow-hidden">
-        <div className="flex items-end h-[85vh] md:h-auto md:items-center lg:p-12 z-[30]">
-          <div className="flex flex-col gap-2 items-center justify-end p-3 mb-8 w-full lg:w-[35rem]">
+      <div className="bg-[#040507]  flex justify-evenly relative overflow-hidden">
+        <div className="flex items-end relative h-[85vh] md:h-auto md:items-center lg:p-12 z-[30]">
+          <div className="flex flex-col  gap-2 items-center justify-end p-3 mb-8 w-full lg:w-[35rem]">
             <HeroTitle>
               New c<span className="strokeText">omic</span>s today
             </HeroTitle>
@@ -44,10 +44,10 @@ const SlideOne = () => {
             </Paragraph>
           </div>
         </div>
-        <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-t from-zinc-900 to-transparent z-[20] md:hidden"></div>
+        <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-t from-zinc-900 to-transparent md:hidden"></div>
         <div className="w-full h-[2rem] absolute bottom-0 left-0 bg-gradient-to-b from-zinc-900 to-white z-[5]"></div>
         <StrokedTextEffect>Marvel Comics</StrokedTextEffect>
-        <div className="w-full absolute top-0 left-0 h-full md:h-auto md:max-w-md lg:max-w-xl md:relative z-0">
+        <div className="w-full absolute top-0 left-0 h-full md:h-auto md:max-w-md lg:max-w-xl md:relative z-[2]">
           <motion.img
             initial={{ y: 30, opacity: 0 }}
             viewport={{ once: true }}
@@ -195,7 +195,7 @@ const SlideTwo = () => {
                 <AnimatePresence>
                   {selectId && (
                     <motion.div
-                      className="fixed  flex items-center justify-center inset-0 bg-opacity-50 bg-black z-[10]"
+                      className="fixed  flex items-center justify-center inset-0 bg-opacity-50 bg-black z-[50]"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -246,7 +246,7 @@ const SlideThree = () => {
 
   return (
     <section className="py-14 bg-[#040507]">
-      <div className="max-w-screen-xl mx-auto px-4 text-gray-600 gap-x-12 items-start justify-between lg:flex md:px-8">
+      <div className="max-w-screen-xl relative mx-auto px-4 text-gray-600 gap-x-12 items-start justify-between lg:flex md:px-8">
         <div className="sm:hidden lg:block lg:max-w-xl">
           <img src={herosIMG} className="rounded-lg" alt="Img" loading="lazy" />
         </div>
@@ -263,7 +263,6 @@ const SlideThree = () => {
             <ul className="inline-grid gap-y-8 gap-x-12 md:gap-x-20 grid-cols-3">
               {stats.map((item, idx) => (
                 <li key={idx} className="">
-                  {/* {item.data}+ */}
                   <NumberCountEffect
                     className="text-4xl md:text-5xl text-red font-semibold"
                     startNumber={item.startNumber}

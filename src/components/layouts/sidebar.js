@@ -71,7 +71,7 @@ export default function SideBar() {
   }
   console.log(user);
   return (
-    <nav ref={navRef} className="bg-[#040507] w-full top-0 z-[999]">
+    <nav ref={navRef} className="bg-[#040507] w-full top-0 z-[40]">
       <div className="items-center px-4 max-w-screen-xl mx-auto md:px-8 lg:flex">
         <div className="flex items-center justify-between py-3 lg:py-4 lg:block">
           <motion.div
