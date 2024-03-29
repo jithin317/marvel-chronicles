@@ -42,7 +42,7 @@ export default function Footer() {
       ),
     },
     {
-      href: "#",
+      href: "https://github.com/jithin317",
       svg: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -54,7 +54,7 @@ export default function Footer() {
       ),
     },
     {
-      href: "#",
+      href: "https://www.linkedin.com/in/jithin-mahadev-138582238",
       svg: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +66,7 @@ export default function Footer() {
       ),
     },
     {
-      href: "#",
+      href: "https://www.behance.net/540jithindev",
       svg: (
         <svg
           xmlns="http://www.w3.org/2000/svg"
