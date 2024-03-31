@@ -1,5 +1,6 @@
 import React from "react";
-import ErrorImg from "../../assets/images/404Image.jpg";
+import ErrorImg from "../../assets/images/404Imag.png";
+import ErrorGif from "../../assets/images/404-rain.477626af.gif";
 import { useNavigate } from "react-router-dom";
 
 export default function NoRoutePage() {
@@ -11,9 +12,16 @@ export default function NoRoutePage() {
   return (
     <main>
       <div className="max-w-screen-xl mx-auto px-4 flex items-center h-screen  md:px-8">
-        <div className="flex-1 flex-row-reverse gap-12 items-center justify-between text-center md:text-left md:max-w-none md:flex">
+        <div className="max-w-screen h-screen absolute top-0 left-0 z-[0]">
+          <img src={ErrorGif} loading="lazy" className="w-full h-full" />
+        </div>
+        <div className="flex-1 flex-row-reverse z-[1] gap-12 items-center justify-between text-center md:text-left md:max-w-none md:flex">
           <div className="flex mx-auto max-w-[20rem] lg:max-w-lg">
-            <img src={ErrorImg} loading="lazy" className="rounded-2xl" />
+            <img
+              src={ErrorImg}
+              loading="lazy"
+              className="pointer-events-none"
+            />
           </div>
           <div className="mt-12 flex-1 max-w-lg space-y-3 md:mt-0">
             <h3 className="text-red font-semibold">404 Error</h3>

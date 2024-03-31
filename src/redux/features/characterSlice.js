@@ -45,7 +45,7 @@ export const {
   fetchCharacterError,
 } = characterSlice.actions;
 
-export const fetchCharacters = (offset) => async (dispatch) => {
+export const fetchCharacters = (limit, offset) => async (dispatch) => {
   dispatch(fetchCharactersStart());
   try {
     const response = await axios.get(
@@ -53,10 +53,10 @@ export const fetchCharacters = (offset) => async (dispatch) => {
       {
         params: {
           ts: "1",
-          apikey: "11be3e2798b8dfba5fd1a35b06c1ff12",
-          hash: "ef20bca74f72a08ebddd9b13818ceffb",
-          limit: 10,
-          offset: 50,
+          apikey: process.env.REACT_APP_PUBLIC_KEY,
+          hash: process.env.REACT_APP_HASH_KEY,
+          limit: limit,
+          offset: offset,
         },
       }
     );
