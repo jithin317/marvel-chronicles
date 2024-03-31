@@ -10,17 +10,17 @@ export default function NoRoutePage() {
   };
   return (
     <main>
-      <div className="max-w-screen-xl mx-auto px-4 flex items-center justify-start h-screen md:px-8">
-        <div className="max-w-lg mx-auto flex-1 flex-row-reverse gap-12 items-center justify-between md:max-w-none md:flex">
-          <div className="flex-1 shadow-[rgba(0,_0,_0,_0.25)_0px_25px_50px_-12px] max-w-sm rounded-3xl lg:max-w-lg">
-            <img src={ErrorImg} loading="lazy" className="rounded-3xl" />
+      <div className="max-w-screen-xl mx-auto px-4 flex items-center h-screen  md:px-8">
+        <div className="flex-1 flex-row-reverse gap-12 items-center justify-between text-center md:text-left md:max-w-none md:flex">
+          <div className="flex mx-auto max-w-[20rem] lg:max-w-lg">
+            <img src={ErrorImg} loading="lazy" className="rounded-2xl" />
           </div>
           <div className="mt-12 flex-1 max-w-lg space-y-3 md:mt-0">
             <h3 className="text-red font-semibold">404 Error</h3>
             <p className="text-dark text-4xl font-semibold sm:text-5xl">
               Page not found
             </p>
-            <p className="text-light_gray">
+            <p className="text-light_gray text-[15px] md:text-[17px]">
               Sorry, the page you are looking for could not be found or has been
               removed.
             </p>

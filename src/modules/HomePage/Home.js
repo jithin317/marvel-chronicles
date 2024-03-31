@@ -34,8 +34,8 @@ const SlideOne = () => {
   return (
     <section>
       <div className="bg-[#040507]  flex justify-evenly relative overflow-hidden">
-        <div className="flex items-end relative h-[85vh] md:h-auto md:items-center lg:p-12 z-[30]">
-          <div className="flex flex-col  gap-2 items-center justify-end p-3 mb-8 w-full lg:w-[35rem]">
+        <div className="flex items-end relative h-[90vh] md:h-auto md:items-center lg:p-12 z-[30]">
+          <div className="flex flex-col gap-2 items-center justify-end p-3 mb-16 w-full lg:w-[35rem]">
             <HeroTitle>
               New c<span className="strokeText">omic</span>s today
             </HeroTitle>
@@ -44,8 +44,8 @@ const SlideOne = () => {
             </Paragraph>
           </div>
         </div>
-        <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-t from-zinc-900 to-transparent md:hidden"></div>
-        <div className="w-full h-[2rem] absolute bottom-0 left-0 bg-gradient-to-b from-zinc-900 to-white z-[5]"></div>
+        <div className="w-full h-full absolute top-0 left-0 bg-gradient-to-t from-zinc-900 to-transparent md:hidden z-[20]"></div>
+        <div className="w-full h-[2rem] absolute bottom-0 left-0 bg-gradient-to-b from-zinc-900 to-white z-[20]"></div>
         <StrokedTextEffect>Marvel Comics</StrokedTextEffect>
         <div className="w-full absolute top-0 left-0 h-full md:h-auto md:max-w-md lg:max-w-xl md:relative z-[2]">
           <motion.img
@@ -195,10 +195,11 @@ const SlideTwo = () => {
                 <AnimatePresence>
                   {selectId && (
                     <motion.div
-                      className="fixed  flex items-center justify-center inset-0 bg-opacity-50 bg-black z-[50]"
+                      className="fixed flex items-center justify-center inset-0 bg-opacity-50 bg-black z-[50]"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
+                      onClick={() => setSelectId(null)}
                     >
                       {features.map(
                         (item) =>
@@ -206,7 +207,7 @@ const SlideTwo = () => {
                             <motion.li
                               key={item.id}
                               layoutId={item.id}
-                              className={`space-y-3 py-10 lg:p-8 sm:py-0 rounded-xl bg-gray-50 w-[25rem] cursor-pointer`}
+                              className={`space-y-3 p-8 lg:p-8 rounded-xl w-[22rem] bg-gray-50 md:w-[25rem] cursor-pointer`}
                               onClick={() => setSelectId(null)}
                             >
                               <div className="w-12 h-12 mx-auto bg-gray-100 text-white p-7 rounded-full flex items-center justify-center">
@@ -474,11 +475,11 @@ const SlideFive = () => {
     }
   }
   return (
-    <main className="flex max-w-screen-xl mx-auto  overflow-hidden">
-      <div className="flex-1 rounded-lg  max-w-2xl hidden lg:block">
+    <main className="flex flex-col items-center lg:flex-row max-w-screen-xl mx-auto  overflow-hidden">
+      <div className="flex-1 lg:rounded-lg max-w-sm md:max-w-xl lg:max-w-2xl lg:block">
         <img
           src={spideyIMG}
-          className="w-full h-screen rounded-full object-cover pointer-events-none"
+          className="w-full bg-black  lg:bg-transparent rounded-2xl lg:h-screen lg:rounded-full object-cover pointer-events-none"
         />
       </div>
       <div className="py-12 flex-1 lg:flex lg:justify-center lg:h-screen lg:overflow-auto">
