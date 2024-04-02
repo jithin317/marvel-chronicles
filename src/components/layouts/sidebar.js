@@ -8,10 +8,9 @@ import {
 } from "../../assets/icons/home-icons/icons";
 import { motion } from "framer-motion";
 import { UserContext } from "../../context/auth-context";
-import { InfoToast } from "../helpers/toast-container";
+import { ErrorToast, InfoToast } from "../helpers/toast-container";
 import { signOut } from "firebase/auth";
 import { Auth } from "../../utils/firebase/firebaseConfig";
-import dummyImg from "../../assets/images/dummy_img.jpg";
 import ProfileDropDown from "../ui/profile-dropdown";
 import BounceEffect from "../ui/bounceEffect";
 
@@ -28,7 +27,6 @@ export default function SideBar() {
     { title: "Comics", path: "/comics" },
     { title: "Series", path: "/series" },
   ];
-  console.log(user);
   useEffect(() => {
     const body = document.body;
     const customBodyStyle = ["overflow-hidden", "lg:overflow-visible"];
@@ -75,7 +73,7 @@ export default function SideBar() {
       navigate("/");
       setUser(null);
     } catch (error) {
-      console.log(error);
+      ErrorToast({ message: error });
     }
   }
 
@@ -172,7 +170,11 @@ export default function SideBar() {
             >
               <div className="border-t border-gray-500 md:border-0">
                 <ProfileDropDown
-                  imgURL={user?.photoURL ? user?.photoURL : dummyImg}
+                  imgURL={
+                    user?.photoURL
+                      ? user?.photoURL
+                      : "https://i.ibb.co/CPCcQSB/dummy-img-min.jpg"
+                  }
                   name={user?.displayName}
                   email={user?.email}
                   signOut={handleSignOut}

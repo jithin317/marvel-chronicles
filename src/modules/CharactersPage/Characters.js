@@ -11,8 +11,7 @@ export default function Characters() {
   );
   const [limit] = useState(12);
   const [offset, setOffset] = useState(0);
-  // console.log(isLoading, characters, error);
-  console.log(characters);
+  
   useEffect(() => {
     dispatch(fetchCharacters(limit, offset));
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -42,13 +41,10 @@ export default function Characters() {
                   <div className="mt-4 flex justify-between">
                     <div>
                       <h3 className="text-sm text-gray-700">
-                        <a href="#">
-                          <span
-                            aria-hidden="true"
-                            className="absolute inset-0"
-                          />
-                          {char.name}
-                        </a>
+                        {/* <a href="#"> */}
+                        <span aria-hidden="true" className="absolute inset-0" />
+                        {char.name}
+                        {/* </a> */}
                       </h3>
                     </div>
                   </div>

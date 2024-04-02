@@ -43,7 +43,6 @@ export const fetchSeries = (limit, offset) => async (dispatch) => {
         },
       }
     );
-    console.log(response.data.data.total);
     dispatch(fetchSeriesSuccess(response.data.data.results));
   } catch (error) {
     dispatch(fetchSeriesError(error.message));

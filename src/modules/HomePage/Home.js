@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import VenomImg from "../../assets/images/Venom_img.png";
 import HeroTitle from "../../components/main/hero";
 import Paragraph from "../../components/main/Paragraph";
 import { TextGenerateEffect } from "../../components/ui/textgenerateEffect";
@@ -8,14 +7,12 @@ import MainHeading from "../../components/Headings/main-heading";
 import { CheckedIcon, RejectIcon } from "../../assets/icons/home-icons/icons";
 import BounceEffect from "../../components/ui/bounceEffect";
 import StrokedTextEffect from "../../components/ui/strokedTextEffect";
-import spideyIMG from "../../assets/images/moonKnight.png";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import ContactForm from "../../components/forms/contact-form";
 import { UserContext } from "../../context/auth-context";
 import { WarnToast } from "../../components/helpers/toast-container";
 import AddDoc from "../../utils/addDocuments/add-doc";
-import herosIMG from "../../assets/images/herosImg.png";
 import NumberCountEffect from "../../components/ui/numberCountEffect";
 
 export default function Home() {
@@ -37,7 +34,7 @@ const SlideOne = () => {
         <div className="flex items-end relative h-[90vh] md:h-auto md:items-center lg:p-12 z-[30]">
           <div className="flex flex-col gap-2 items-center justify-end p-3 mb-16 w-full lg:w-[35rem]">
             <HeroTitle>
-              New c<span className="strokeText">omic</span>s today
+              New super<span className="strokeText">hero</span> comics
             </HeroTitle>
             <Paragraph>
               <TextGenerateEffect words="see what comics are in your local book and recap the last few issues" />
@@ -53,7 +50,7 @@ const SlideOne = () => {
             viewport={{ once: true }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 1 }}
-            src={VenomImg}
+            src={"https://i.ibb.co/dGzvznh/Venom-img-min.png"}
             className="w-full h-full pointer-events-none"
           />
         </div>
@@ -249,7 +246,12 @@ const SlideThree = () => {
     <section className="py-14 bg-[#040507]">
       <div className="max-w-screen-xl relative mx-auto px-4 text-gray-600 gap-x-12 items-start justify-between lg:flex md:px-8">
         <div className="sm:hidden lg:block lg:max-w-xl">
-          <img src={herosIMG} className="rounded-lg" alt="Img" loading="lazy" />
+          <img
+            src={"https://i.ibb.co/9sQFKhh/heros-Img-min.png"}
+            className="rounded-lg"
+            alt="Img"
+            loading="lazy"
+          />
         </div>
         <div className="mt-6 text-center5 gap-12 sm:mt-0 lg:block">
           <div className="flex items-center justify-center">
@@ -478,7 +480,7 @@ const SlideFive = () => {
     <main className="flex flex-col items-center lg:flex-row max-w-screen-xl mx-auto  overflow-hidden">
       <div className="flex-1 lg:rounded-lg max-w-sm md:max-w-xl lg:max-w-2xl lg:block">
         <img
-          src={spideyIMG}
+          src={"https://i.ibb.co/hBxq9YD/moon-Knight-min.png"}
           className="w-full bg-black  lg:bg-transparent rounded-2xl lg:h-screen lg:rounded-full object-cover pointer-events-none"
         />
       </div>

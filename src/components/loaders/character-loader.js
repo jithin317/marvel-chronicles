@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function CharacterLoader() {
-  return Array.from(Array(9).keys()).map((ele, idx) => {
+  return Array.from(Array(12).keys()).map((ele, idx) => {
     return (
       <div key={idx} className="group relative animate-pulse">
         <div className="w-full h-[23rem] sm:h-[18rem] rounded-md bg-gray-300 lg:aspect-none lg:h-80"></div>

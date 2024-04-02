@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function Image({ src, className = "" }) {
+export default function Image({ src, className = "", alt = "super-hero" }) {
   const [isLoaded, setIsLoaded] = useState(false);
   return (
     <div className={`${className} ${isLoaded} ? blur-none : blur-md`}>
@@ -9,6 +9,7 @@ export default function Image({ src, className = "" }) {
         loading="lazy"
         onLoad={() => setIsLoaded(true)}
         className={`h-full w-full object-center`}
+        alt={alt}
       />
     </div>
   );

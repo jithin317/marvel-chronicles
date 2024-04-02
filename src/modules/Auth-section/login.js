@@ -6,11 +6,9 @@ import InputField from "../../components/forms/inputField";
 import { Form, Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 import Image from "../../components/Image/image";
-import IronManImg from "../../assets/images/iron_man.png";
 import { AuthButton, GoogleButton } from "../../components/buttons/buttons";
 import { HandleGoogleCreds } from "../../utils/auth-handlers/google-creds";
 import { HandleLogin } from "../../utils/auth-handlers/login-handler";
-
 
 export default function Login() {
   const navigate = useNavigate();
@@ -25,14 +23,6 @@ export default function Login() {
     password: Yup.string().required("Password is required!"),
   });
 
-  // onAuthStateChanged(Auth, (user) => {
-  //   if (user) {
-  //     console.log(user);
-  //     console.log("Signed In");
-  //   } else {
-  //     console.log("no user signed in");
-  //   }
-  // });
   return (
     <div className="flex min-h-screen justify-center">
       <div className="flex flex-col items-center justify-center w-full md:w-8/12">
@@ -95,7 +85,7 @@ export default function Login() {
         </div>
       </div>
       <Image
-        src={IronManImg}
+        src={"https://i.ibb.co/y0YNrh0/iron-man-min.png"}
         className="max-w-sm lg:max-w-lg pointer-events-none relative hidden md:block"
       />
     </div>

@@ -20,7 +20,6 @@ export default function ProfileDropDown({
     document.addEventListener("click", handleDropDown);
   }, []);
 
-  // console.log(imgURL);
 
   return (
     <div className={`relative p-2 md:p-0 ${className}`}>
@@ -48,18 +47,18 @@ export default function ProfileDropDown({
           state ? "" : "lg:hidden"
         }`}
       >
-        <li>
+        {/* <li>
           <a
             className="block text-white rounded-t-md hover:text-rose-500 lg:text-gray-600 lg:hover:bg-gray-200 lg:p-3"
             href={"#"}
           >
             Profile
           </a>
-        </li>
+        </li> */}
         <li>
           <a
             onClick={() => signOut()}
-            className="block text-white text-gray-600 rounded-b-md hover:text-rose-500 lg:text-gray-600 lg:hover:bg-gray-200 cursor-pointer lg:p-3"
+            className="block text-white text-gray-600 rounded-md hover:text-rose-500 lg:text-gray-600 lg:hover:bg-gray-200 cursor-pointer lg:p-3"
           >
             Log out
           </a>

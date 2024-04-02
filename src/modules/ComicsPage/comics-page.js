@@ -10,8 +10,6 @@ export default function Comics() {
   const [limit] = useState(12);
   const [offset, setOffset] = useState(0);
 
-  // console.log(isLoading, comics, error);
-  // console.log(comics);
   useEffect(() => {
     dispatch(fetchComics(limit, offset));
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -53,13 +51,10 @@ export default function Comics() {
                   <div className="mt-4 flex justify-between">
                     <div className="w-full flex flex-col gap-1">
                       <h3 className="text-md text-gray-700 truncate whitespace-nowrap overflow-hidden">
-                        <a href="#">
-                          <span
-                            aria-hidden="true"
-                            className="absolute inset-0"
-                          />
-                          {comic.title}
-                        </a>
+                        {/* <a href="#"> */}
+                        <span aria-hidden="true" className="absolute inset-0" />
+                        {comic.title}
+                        {/* </a> */}
                       </h3>
                       {names.length !== 0 && (
                         <p className="w-[70%] text-sm text-gray-600 truncate whitespace-nowrap overflow-hidden">
