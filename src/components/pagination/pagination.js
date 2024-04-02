@@ -4,7 +4,6 @@ export default function Pagination({ offset, setOffset, limit, totalCount }) {
   const [currentPage, setCurrentPage] = useState(1);
   const [displayedPages, setDisplayedPages] = useState([]);
   const total = totalCount;
-
   useEffect(() => {
     // Update displayedPages when currentPage changes
     const totalPages = Math.ceil(total / limit);
@@ -121,6 +120,7 @@ export default function Pagination({ offset, setOffset, limit, totalCount }) {
           </svg>
         </button>
       </div>
+      {/* Mobile Pagination */}
       <div className="flex items-center justify-between text-sm text-gray-600 font-medium sm:hidden">
         <button
           onClick={prevPage}
@@ -130,7 +130,7 @@ export default function Pagination({ offset, setOffset, limit, totalCount }) {
           Prev
         </button>
         <div className="font-medium">
-          Page {currentPage} of {130}
+          Page {currentPage} of {Math.ceil(total / limit)}
         </div>
         <button
           onClick={nextPage}

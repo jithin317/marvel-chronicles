@@ -6,7 +6,7 @@ export default function App({ number }) {
   const rounded = useTransform(count, Math.round);
 
   useEffect(() => {
-    const animation = animate(count, { number }, { duration: 5 });
+    const animation = animate(count, { number }, { duration: 6 });
     return animation.stop;
   }, []);
 

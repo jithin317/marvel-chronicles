@@ -9,6 +9,7 @@ import AuthContext from "../context/auth-context";
 import ProtectedRoute from "./protected-route";
 import Comics from "../modules/ComicsPage/comics-page";
 import NoRoutePage from "../modules/NoRoutePage/NoRoutePage";
+import Series from "../modules/SeriesPage/series-page";
 
 export default function Index() {
   const router = createBrowserRouter([
@@ -33,6 +34,14 @@ export default function Index() {
           element: (
             <ProtectedRoute>
               <Comics />
+            </ProtectedRoute>
+          ),
+        },
+        {
+          path: "series",
+          element: (
+            <ProtectedRoute>
+              <Series />
             </ProtectedRoute>
           ),
         },

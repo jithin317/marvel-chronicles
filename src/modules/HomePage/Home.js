@@ -237,12 +237,12 @@ const SlideTwo = () => {
 const SlideThree = () => {
   const stats = [
     {
-      startNumber: 1470,
+      startNumber: 1490,
       data: 1500,
       title: "Characters",
     },
-    { startNumber: 59970, data: 60000, title: "Comics" },
-    { startNumber: 70000, data: 70030, title: "Series" },
+    { startNumber: 59990, data: 60000, title: "Comics" },
+    { startNumber: 14740, data: 14750, title: "Series" },
   ];
 
   return (
@@ -265,7 +265,7 @@ const SlideThree = () => {
               {stats.map((item, idx) => (
                 <li key={idx} className="">
                   <NumberCountEffect
-                    className="text-4xl md:text-5xl text-red font-semibold"
+                    className="text-3xl md:text-5xl text-red font-semibold"
                     startNumber={item.startNumber}
                     endNumber={item.data}
                   />

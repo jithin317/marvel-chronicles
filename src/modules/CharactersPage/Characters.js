@@ -12,6 +12,7 @@ export default function Characters() {
   const [limit] = useState(12);
   const [offset, setOffset] = useState(0);
   // console.log(isLoading, characters, error);
+  console.log(characters);
   useEffect(() => {
     dispatch(fetchCharacters(limit, offset));
     window.scrollTo({ top: 0, behavior: "smooth" });

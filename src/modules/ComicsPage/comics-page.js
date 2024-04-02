@@ -11,7 +11,7 @@ export default function Comics() {
   const [offset, setOffset] = useState(0);
 
   // console.log(isLoading, comics, error);
-
+  // console.log(comics);
   useEffect(() => {
     dispatch(fetchComics(limit, offset));
     window.scrollTo({ top: 0, behavior: "smooth" });
@@ -29,9 +29,21 @@ export default function Comics() {
             <CharacterLoader />
           ) : (
             comics.map((comic) => {
+              const { creators, prices } = comic;
+              let names = [];
+              let rate = 0;
+              if (creators.available > 0) {
+                creators.items.map((ele) => {
+                  names.push(ele.name);
+                });
+              }
+              if (prices.length > 0) {
+                prices.map((price) => (rate += price.price));
+              }
+              const name = names.join(", ");
               return (
                 <div key={comic.id} className="group relative">
-                  <div className="w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                  <div className="w-full shadow-xl shadow-rose-500/20 overflow-hidden border-8 border-black bg-gray-200 lg:aspect-none group-hover:opacity-75">
                     <img
                       src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
                       alt={`${comic.title} img`}
@@ -39,8 +51,8 @@ export default function Comics() {
                     />
                   </div>
                   <div className="mt-4 flex justify-between">
-                    <div>
-                      <h3 className="text-sm text-gray-700">
+                    <div className="w-full flex flex-col gap-1">
+                      <h3 className="text-md text-gray-700 truncate whitespace-nowrap overflow-hidden">
                         <a href="#">
                           <span
                             aria-hidden="true"
@@ -49,6 +61,18 @@ export default function Comics() {
                           {comic.title}
                         </a>
                       </h3>
+                      {names.length !== 0 && (
+                        <p className="w-[70%] text-sm text-gray-600 truncate whitespace-nowrap overflow-hidden">
+                          {name}
+                        </p>
+                      )}
+                      <div>
+                        {rate > 0 && (
+                          <p className="mr-2 text-lg font-semibold text-gray-900">
+                            ${rate}
+                          </p>
+                        )}
+                      </div>
                     </div>
                   </div>
                 </div>
