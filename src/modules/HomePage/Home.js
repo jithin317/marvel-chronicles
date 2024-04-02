@@ -237,12 +237,12 @@ const SlideTwo = () => {
 const SlideThree = () => {
   const stats = [
     {
-      startNumber: 150,
-      data: 220,
+      startNumber: 1470,
+      data: 1500,
       title: "Characters",
     },
-    { startNumber: 380, data: 450, title: "Comics" },
-    { startNumber: 610, data: 680, title: "Series" },
+    { startNumber: 59970, data: 60000, title: "Comics" },
+    { startNumber: 70000, data: 70030, title: "Series" },
   ];
 
   return (

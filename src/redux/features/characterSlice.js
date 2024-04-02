@@ -23,20 +23,6 @@ export const characterSlice = createSlice({
       state.error = action.payload;
     },
   },
-  //   extraReducers: (builder) => {
-  //     builder
-  //       .addCase(fetchCharacters.pending, (state) => {
-  //         state.isLoading = true;
-  //       })
-  //       .addCase(fetchCharacters.fulfilled, (state, action) => {
-  //         state.characters = action.payload;
-  //         state.isLoading = false;
-  //       })
-  //       .addCase(fetchCharacters.rejected, (state, action) => {
-  //         state.error = action.payload;
-  //         state.isLoading = false;
-  //       });
-  //   },
 });
 
 export const {

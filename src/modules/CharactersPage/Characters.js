@@ -2,17 +2,20 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCharacters } from "../../redux/features/characterSlice";
 import CharacterLoader from "../../components/loaders/character-loader";
+import Pagination from "../../components/pagination/pagination";
 
 export default function Characters() {
   const dispatch = useDispatch();
   const { isLoading, characters, error } = useSelector(
     (state) => state.characters
   );
-  const [limit, setLimit] = useState(9);
+  const [limit] = useState(12);
+  const [offset, setOffset] = useState(0);
   // console.log(isLoading, characters, error);
   useEffect(() => {
-    dispatch(fetchCharacters(limit, 0));
-  }, [dispatch]);
+    dispatch(fetchCharacters(limit, offset));
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [dispatch, offset]);
 
   return (
     <div className="bg-white">
@@ -53,6 +56,12 @@ export default function Characters() {
             })
           )}
         </div>
+        <Pagination
+          setOffset={setOffset}
+          limit={limit}
+          offset={offset}
+          totalCount={1564}
+        />
       </div>
     </div>
   );
