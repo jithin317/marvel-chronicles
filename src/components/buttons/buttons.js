@@ -15,6 +15,7 @@ const item = {
 export function AuthButton({ className = "", text = "Login", onClkFn, type }) {
   return (
     <motion.button
+      aria-label={text}
       type={type}
       variants={item}
       initial="initial"
@@ -37,6 +38,7 @@ export function GoogleButton({
   return (
     <motion.button
       type={type}
+      aria-label={text}
       variants={item}
       initial="initial"
       animate="visible"

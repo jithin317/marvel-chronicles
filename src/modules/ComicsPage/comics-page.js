@@ -44,7 +44,7 @@ export default function Comics() {
                   <div className="w-full shadow-xl shadow-rose-500/20 overflow-hidden border-8 border-black bg-gray-200 lg:aspect-none group-hover:opacity-75">
                     <img
                       src={`${comic.thumbnail.path}.${comic.thumbnail.extension}`}
-                      alt={`${comic.title} img`}
+                      alt={`${comic.title} comics`}
                       className="h-full w-full object-cover object-center"
                     />
                   </div>

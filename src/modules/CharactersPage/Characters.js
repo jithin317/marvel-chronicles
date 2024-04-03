@@ -34,7 +34,7 @@ export default function Characters() {
                   <div className="w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                     <img
                       src={`${char.thumbnail.path}.${char.thumbnail.extension}`}
-                      alt={`${char.name} img`}
+                      alt={`${char.name}`}
                       className="h-full w-full object-cover object-center"
                     />
                   </div>

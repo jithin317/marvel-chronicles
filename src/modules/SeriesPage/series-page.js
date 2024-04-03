@@ -44,7 +44,7 @@ export default function Series() {
                   <div className="w-full shadow-[rgba(7,_65,_210,_0.1)_0px_9px_30px] overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
                     <img
                       src={`${seriesObj.thumbnail.path}.${seriesObj.thumbnail.extension}`}
-                      alt={`${seriesObj.title} img`}
+                      alt={`${seriesObj.title} series`}
                       className="h-full w-full object-cover object-center"
                     />
                   </div>

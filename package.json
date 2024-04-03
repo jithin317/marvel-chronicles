@@ -18,6 +18,7 @@
     "react-router-dom": "^6.21.3",
     "react-scripts": "5.0.1",
     "react-toastify": "^10.0.5",
+    "sitemap-generator": "^8.5.1",
     "tailwind-merge": "^2.2.2",
     "web-vitals": "^2.1.4",
     "yup": "^1.4.0"
@@ -26,7 +27,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "generate-sitemap": "node generateSitemap.js"
   },
   "eslintConfig": {
     "extends": [

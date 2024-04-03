@@ -1,15 +1,17 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { lazy } from "react";
 import MainLayout from "../components/layouts/main-layout";
-import Characters from "../modules/CharactersPage/Characters";
 import Home from "../modules/HomePage/Home";
-import Login from "../modules/Auth-section/login";
-import SignUp from "../modules/Auth-section/signup";
 import AuthContext from "../context/auth-context";
 import ProtectedRoute from "./protected-route";
-import Comics from "../modules/ComicsPage/comics-page";
-import NoRoutePage from "../modules/NoRoutePage/NoRoutePage";
-import Series from "../modules/SeriesPage/series-page";
+import LoadingBackground from "../components/loaders/lazy-loaders";
+const Login = lazy(() => import("../modules/Auth-section/login"));
+const SignUp = lazy(() => import("../modules/Auth-section/signup"));
+const Comics = lazy(() => import("../modules/ComicsPage/comics-page"));
+const Series = lazy(() => import("../modules/SeriesPage/series-page"));
+const Characters = lazy(() => import("../modules/CharactersPage/Characters"));
+const NoRoutePage = lazy(() => import("../modules/NoRoutePage/NoRoutePage"));
 
 export default function Index() {
   const router = createBrowserRouter([
@@ -65,8 +67,10 @@ export default function Index() {
     },
   ]);
   return (
-    <AuthContext>
-      <RouterProvider router={router} />
-    </AuthContext>
+    <Suspense fallback={<LoadingBackground />}>
+      <AuthContext>
+        <RouterProvider router={router} />
+      </AuthContext>
+    </Suspense>
   );
 }

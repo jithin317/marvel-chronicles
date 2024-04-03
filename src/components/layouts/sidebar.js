@@ -92,6 +92,7 @@ export default function SideBar() {
             <div className="lg:hidden">
               <BounceEffect tapScale={0.75}>
                 <button
+                  aria-label="search-icon"
                   className="text-light outline-none p-2 border border-transparent rounded-md focus:border-gray-400 focus:border"
                   onClick={() => setState(!state)}
                 >
@@ -114,6 +115,7 @@ export default function SideBar() {
           <div className="lg:hidden">
             <BounceEffect tapScale={0.75}>
               <button
+                aria-label="menu-button"
                 className="text-light outline-none p-2 border border-transparent rounded-md focus:border-gray-400 focus:border"
                 onClick={() => setState(!state)}
               >

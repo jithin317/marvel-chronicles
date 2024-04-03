@@ -85,8 +85,9 @@ export default function Login() {
         </div>
       </div>
       <Image
-        src={"https://i.ibb.co/y0YNrh0/iron-man-min.png"}
+        src={"https://i.ibb.co/VgtCnFw/iron-man-min.webp"}
         className="max-w-sm lg:max-w-lg pointer-events-none relative hidden md:block"
+        alt="iron man lego"
       />
     </div>
   );

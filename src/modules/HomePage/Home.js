@@ -34,10 +34,10 @@ const SlideOne = () => {
         <div className="flex items-end relative h-[90vh] md:h-auto md:items-center lg:p-12 z-[30]">
           <div className="flex flex-col gap-2 items-center justify-end p-3 mb-16 w-full lg:w-[35rem]">
             <HeroTitle>
-              New super<span className="strokeText">hero</span> comics
+              New c<span className="strokeText">omic</span>s today
             </HeroTitle>
             <Paragraph>
-              <TextGenerateEffect words="see what comics are in your local book and recap the last few issues" />
+              <TextGenerateEffect words="Explore Marvel Merchandise, Comics, and More | Check Out Latest Issues at Your Local Bookstore" />
             </Paragraph>
           </div>
         </div>
@@ -50,8 +50,9 @@ const SlideOne = () => {
             viewport={{ once: true }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 1 }}
-            src={"https://i.ibb.co/dGzvznh/Venom-img-min.png"}
+            src={"https://i.ibb.co/Qp2VVnQ/Venom-img-min.webp"}
             className="w-full h-full pointer-events-none"
+            alt="venom 3"
           />
         </div>
       </div>
@@ -189,42 +190,44 @@ const SlideTwo = () => {
                     <p>{item.desc}</p>
                   </motion.li>
                 </BounceEffect>
-                <AnimatePresence>
-                  {selectId && (
-                    <motion.div
-                      className="fixed flex items-center justify-center inset-0 bg-opacity-50 bg-black z-[50]"
-                      initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
-                      exit={{ opacity: 0 }}
-                      onClick={() => setSelectId(null)}
-                    >
-                      {features.map(
-                        (item) =>
-                          item.id === selectId && (
-                            <motion.li
-                              key={item.id}
-                              layoutId={item.id}
-                              className={`space-y-3 p-8 lg:p-8 rounded-xl w-[22rem] bg-gray-50 md:w-[25rem] cursor-pointer`}
-                              onClick={() => setSelectId(null)}
-                            >
-                              <div className="w-12 h-12 mx-auto bg-gray-100 text-white p-7 rounded-full flex items-center justify-center">
-                                <div className="bg-rose-100 text-red p-2 rounded-full">
-                                  {item.icon}
-                                </div>
-                              </div>
-                              <h4 className="text-dark_gray text-gray-800 font-semibold">
-                                {item.title}
-                              </h4>
-                              <p>{item.desc}</p>
-                            </motion.li>
-                          )
-                      )}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
               </LayoutGroup>
             ))}
           </motion.ul>
+          <AnimatePresence>
+            {selectId && (
+              <motion.div
+                className="fixed flex items-center justify-center inset-0 bg-opacity-50 bg-black z-[50]"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                onClick={() => setSelectId(null)}
+              >
+                <ul>
+                  {features.map(
+                    (item) =>
+                      item.id === selectId && (
+                        <motion.li
+                          key={item.id}
+                          layoutId={item.id}
+                          className={`space-y-3 p-8 lg:p-8 rounded-xl w-[22rem] bg-gray-50 md:w-[25rem] cursor-pointer`}
+                          onClick={() => setSelectId(null)}
+                        >
+                          <div className="w-12 h-12 mx-auto bg-gray-100 text-white p-7 rounded-full flex items-center justify-center">
+                            <div className="bg-rose-100 text-red p-2 rounded-full">
+                              {item.icon}
+                            </div>
+                          </div>
+                          <h4 className="text-dark_gray text-gray-800 font-semibold">
+                            {item.title}
+                          </h4>
+                          <p>{item.desc}</p>
+                        </motion.li>
+                      )
+                  )}
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </div>
     </section>
@@ -247,9 +250,9 @@ const SlideThree = () => {
       <div className="max-w-screen-xl relative mx-auto px-4 text-gray-600 gap-x-12 items-start justify-between lg:flex md:px-8">
         <div className="sm:hidden lg:block lg:max-w-xl">
           <img
-            src={"https://i.ibb.co/9sQFKhh/heros-Img-min.png"}
+            src={"https://i.ibb.co/gwBtRdN/heros-Img-min.webp"}
             className="rounded-lg"
-            alt="Img"
+            alt="lego marvel superheros"
             loading="lazy"
           />
         </div>
@@ -435,7 +438,10 @@ const SlideFour = () => {
                 ))}
               </ul>
               <BounceEffect className="flex-1 flex items-end">
-                <button className="px-3 py-3 rounded-lg w-full font-semibold text-sm duration-150 text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700">
+                <button
+                  aria-label="Get Started"
+                  className="px-3 py-3 rounded-lg w-full font-semibold text-sm duration-150 text-white bg-indigo-600 hover:bg-indigo-500 active:bg-indigo-700"
+                >
                   Get Started
                 </button>
               </BounceEffect>
@@ -480,8 +486,9 @@ const SlideFive = () => {
     <main className="flex flex-col items-center lg:flex-row max-w-screen-xl mx-auto  overflow-hidden">
       <div className="flex-1 lg:rounded-lg max-w-sm md:max-w-xl lg:max-w-2xl lg:block">
         <img
-          src={"https://i.ibb.co/hBxq9YD/moon-Knight-min.png"}
-          className="w-full bg-black  lg:bg-transparent rounded-2xl lg:h-screen lg:rounded-full object-cover pointer-events-none"
+          src={"https://i.ibb.co/rHR8tr1/moon-Knight-min.webp"}
+          className="w-full bg-black hidden lg:block lg:bg-transparent rounded-2xl lg:h-screen lg:rounded-full object-cover pointer-events-none"
+          alt="moon knight cover"
         />
       </div>
       <div className="py-12 flex-1 lg:flex lg:justify-center lg:h-screen lg:overflow-auto">

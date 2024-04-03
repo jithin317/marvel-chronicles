@@ -39,8 +39,8 @@ export default function SignUp() {
   return (
     <div className="flex justify-center min-h-screen">
       <Image
-        src={"https://i.ibb.co/Fzw7ykf/cap-america-min.png"}
-        alt={""}
+        src={"https://i.ibb.co/nmhFRSx/cap-america-min.webp"}
+        alt={"captain america lego"}
         className="max-w-sm lg:max-w-lg pointer-events-none relative hidden md:block"
       />
       <div className="flex flex-col items-center justify-center w-full md:w-8/12">

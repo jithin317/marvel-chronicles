@@ -30,6 +30,7 @@ export default function Footer() {
 
   const iconLinks = [
     {
+      name: "instagram-link",
       href: "https://www.instagram.com/_its_jithin_/",
       svg: (
         <svg
@@ -42,6 +43,7 @@ export default function Footer() {
       ),
     },
     {
+      name: "github-link",
       href: "https://github.com/jithin317",
       svg: (
         <svg
@@ -54,6 +56,7 @@ export default function Footer() {
       ),
     },
     {
+      name: "linkedin-link",
       href: "https://www.linkedin.com/in/jithin-mahadev-138582238",
       svg: (
         <svg
@@ -66,6 +69,7 @@ export default function Footer() {
       ),
     },
     {
+      name: "behance-link",
       href: "https://www.behance.net/540jithindev",
       svg: (
         <svg
@@ -131,14 +135,16 @@ export default function Footer() {
                 variants={link}
                 className="hover:text-red w-fit"
               >
-                <a href={item.href}>{item.name}</a>
+                <a aria-label={item.name} href={item.href}>
+                  {item.name}
+                </a>
               </motion.li>
             </BounceEffect>
           ))}
         </motion.ul>
         <div className="mt-8 items-center justify-between sm:flex">
           <div className="mt-4 sm:mt-0">
-            <Link to={"http://marvel.com"}>
+            <Link aria-label="marvel-comics" to={"http://marvel.com"}>
               Data provided by{" "}
               <span className="text-rose-500 hover:text-rose-700"> Marvel</span>
               .<i> &copy; {new Date().getFullYear()} MARVEL</i>
@@ -160,7 +166,9 @@ export default function Footer() {
                       key={idx}
                       className="w-10 h-10 border rounded-full flex items-center justify-center"
                     >
-                      <a href={icon.href}>{icon.svg}</a>
+                      <a aria-label={icon.name} href={icon.href}>
+                        {icon.svg}
+                      </a>
                     </motion.li>
                   </BounceEffect>
                 );
