@@ -150,6 +150,7 @@ export default function Footer() {
               .<i> &copy; {new Date().getFullYear()} MARVEL</i>
             </Link>
           </div>
+
           <div className="mt-6 sm:mt-0">
             <motion.ul
               variants={container}

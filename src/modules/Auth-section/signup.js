@@ -39,7 +39,9 @@ export default function SignUp() {
   return (
     <div className="flex justify-center min-h-screen">
       <Image
-        src={"https://i.ibb.co/nmhFRSx/cap-america-min.webp"}
+        src={
+          "https://res.cloudinary.com/dot8ulzhb/image/upload/v1720608142/cap-america-min_jxla8j.webp"
+        }
         alt={"captain america lego"}
         className="max-w-sm lg:max-w-lg pointer-events-none relative hidden md:block"
       />

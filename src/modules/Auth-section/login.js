@@ -85,7 +85,9 @@ export default function Login() {
         </div>
       </div>
       <Image
-        src={"https://i.ibb.co/VgtCnFw/iron-man-min.webp"}
+        src={
+          "https://res.cloudinary.com/dot8ulzhb/image/upload/v1720608142/iron-man-min_gyezrc.webp"
+        }
         className="max-w-sm lg:max-w-lg pointer-events-none relative hidden md:block"
         alt="iron man lego"
       />

@@ -50,7 +50,9 @@ const SlideOne = () => {
             viewport={{ once: true }}
             whileInView={{ y: 0, opacity: 1 }}
             transition={{ duration: 0.5, delay: 1 }}
-            src={"https://i.ibb.co/Qp2VVnQ/Venom-img-min.webp"}
+            src={
+              "https://res.cloudinary.com/dot8ulzhb/image/upload/v1720608142/Venom-img-min_fc9i2w.webp"
+            }
             className="w-full h-full pointer-events-none"
             alt="venom 3"
           />
@@ -486,7 +488,9 @@ const SlideFive = () => {
     <main className="flex flex-col items-center lg:flex-row max-w-screen-xl mx-auto  overflow-hidden">
       <div className="flex-1 lg:rounded-lg max-w-sm md:max-w-xl lg:max-w-2xl lg:block">
         <img
-          src={"https://i.ibb.co/rHR8tr1/moon-Knight-min.webp"}
+          src={
+            "https://res.cloudinary.com/dot8ulzhb/image/upload/v1720608414/moonKnight_t9o0cg.png"
+          }
           className="w-full bg-black hidden lg:block lg:bg-transparent rounded-2xl lg:h-screen lg:rounded-full object-cover pointer-events-none"
           alt="moon knight cover"
         />

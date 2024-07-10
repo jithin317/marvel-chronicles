@@ -12,7 +12,9 @@ export default function NoRoutePage() {
       <div className="max-w-screen-xl mx-auto px-4 flex items-center h-screen  md:px-8">
         <div className="max-w-screen h-screen absolute top-0 left-0 z-[0]">
           <img
-            src={"https://i.ibb.co/hR6w4Pn/404-rain-477626af-min.webp"}
+            src={
+              "https://res.cloudinary.com/dot8ulzhb/image/upload/v1720608470/404-rain.477626af_nmznva.gif"
+            }
             loading="lazy"
             className="w-full h-full"
           />
@@ -20,7 +22,9 @@ export default function NoRoutePage() {
         <div className="flex-1 flex-row-reverse z-[1] gap-12 items-center justify-between text-center md:text-left md:max-w-none md:flex">
           <div className="flex mx-auto max-w-[20rem] lg:max-w-lg">
             <img
-              src={"https://i.ibb.co/FJG9Fzj/404-Imag-min.webp"}
+              src={
+                "https://res.cloudinary.com/dot8ulzhb/image/upload/v1720608142/404-Imag-min_gmrz0g.webp"
+              }
               loading="lazy"
               className="pointer-events-none"
               alt="iron-man ultron"
